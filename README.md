@@ -4,16 +4,18 @@
 
 ### Set Up
 
-- [ ] Git & installation
-- [ ] Confirm connection between Node & TS
+- [x] Git & installation
+- [x] Confirm connection between Node & TS
 
 ### Start Server
 
-- [ ] basic Server & middlewares
-- [ ] Options & handleListen Ftn for Graphql server
+- [x] basic Server & middlewares
+- [x] Options & handleListen Ftn for Graphql server
 
 ### Schema Structure
 
-- [ ] make Schema structure & test API
+- [x] make Schema structure & test API
 
-### Graphql -> Typescript
+### Graphql <-> Typescript
+
+- [x] Graphql to TS

@@ -1,3 +1,9 @@
+type junsickResponse {
+  ok: Boolean!
+  error: String
+  name: String
+}
+
 type Query {
-  junsick: String
+  junsick(name: String!): junsickResponse!
 }

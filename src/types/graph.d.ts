@@ -1,7 +1,17 @@
-export const typeDefs = ["type Query {\n  junsick: String\n  junsik: String\n}\n"];
+export const typeDefs = ["type junsickResponse {\n  ok: Boolean!\n  error: String\n  name: String\n}\n\ntype Query {\n  junsick(name: String!): junsickResponse!\n  junsik: String\n}\n"];
 /* tslint:disable */
 
 export interface Query {
-  junsick: string | null;
+  junsick: junsickResponse;
   junsik: string | null;
+}
+
+export interface JunsickQueryArgs {
+  name: string;
+}
+
+export interface junsickResponse {
+  ok: boolean;
+  error: string | null;
+  name: string | null;
 }
