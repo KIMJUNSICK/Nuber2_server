@@ -1,3 +1,7 @@
+import dotenv from "dotenv";
+dotenv.config();
+// dotenv.config first -> server
+
 import { Options } from "graphql-yoga";
 import { createConnection } from "typeorm";
 import app from "./app";
@@ -19,6 +23,8 @@ const handleListen = () =>
 
 // connect to typeORM
 // DB -> server
-createConnection(connectionOptions).then(() => {
-  app.start(appOptions, handleListen);
-});
+createConnection(connectionOptions)
+  .then(() => {
+    app.start(appOptions, handleListen);
+  })
+  .catch(error => console.log(error));
