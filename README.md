@@ -18,4 +18,7 @@
 
 ### Graphql <-> Typescript
 
-- [x] Graphql to TS
+- [x] connect Graphql to TS
+- [x] Typechecking Graphql Arguments & test types
+
+### Connect to typeORM

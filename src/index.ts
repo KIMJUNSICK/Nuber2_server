@@ -1,6 +1,7 @@
 import { Options } from "graphql-yoga";
+import { createConnection } from "typeorm";
 import app from "./app";
-
+import connectionOptions from "./ormConfig";
 // module first, library second
 
 const PORT: number | string = process.env.PORT || 4000;
@@ -16,4 +17,8 @@ const appOptions: Options = {
 const handleListen = () =>
   console.log(`Listening on: ✅  http://localhost:${PORT}`);
 
-app.start(appOptions, handleListen);
+// connect to typeORM
+// DB -> server
+createConnection(connectionOptions).then(() => {
+  app.start(appOptions, handleListen);
+});
