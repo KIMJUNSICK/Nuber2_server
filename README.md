@@ -15,3 +15,5 @@
 ### Schema Structure
 
 - [ ] make Schema structure & test API
+
+### Graphql -> Typescript
