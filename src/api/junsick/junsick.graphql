@@ -1,9 +1,0 @@
-type junsickResponse {
-  ok: Boolean!
-  error: String
-  name: String
-}
-
-type Query {
-  junsick(name: String!): junsickResponse!
-}

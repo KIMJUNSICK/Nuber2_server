@@ -1,9 +1,5 @@
 import { ConnectionOptions } from "typeorm";
 
-console.log(process.env.DB_USERNAME);
-console.log(process.env.DB_PASSWORD);
-console.log(process.env.DB_ENDPOINT);
-
 const connectionOptions: ConnectionOptions = {
   type: "postgres",
   database: "nuber2",

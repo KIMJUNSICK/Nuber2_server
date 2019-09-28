@@ -1,10 +1,25 @@
-type junsickResponse {
-  ok: Boolean!
-  error: String
-  name: String
+type User {
+  id: Int!
+  email: String
+  verifiedEmail: Boolean!
+  firstName: String!
+  lastName: String!
+  age: Int
+  password: String
+  phoneNumber: String
+  verifiedPhonenNumber: Boolean!
+  profilePhoto: String
+  fullName: String
+  isDriving: Boolean!
+  isRiding: Boolean!
+  isTaken: Boolean!
+  lastLng: Float
+  lastLat: Float
+  lastOrientation: Float
+  createdAt: String!
+  updatedAt: String
 }
 
 type Query {
-  junsick(name: String!): junsickResponse!
-  junsik: String
+  user: User
 }

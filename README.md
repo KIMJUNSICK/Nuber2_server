@@ -26,4 +26,7 @@
 - [x] Configure typeORM
 - [x] Create 'dotenv' environment on NodeJS
 
-### Data Model
+### Data Modeling
+
+- [x] User Entity
+- [x]
