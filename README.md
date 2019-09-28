@@ -22,3 +22,8 @@
 - [x] Typechecking Graphql Arguments & test types
 
 ### Connect to typeORM
+
+- [x] Configure typeORM
+- [x] Create 'dotenv' environment on NodeJS
+
+### Data Model
