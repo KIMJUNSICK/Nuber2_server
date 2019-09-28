@@ -5,8 +5,13 @@ import {
   CreateDateColumn,
   Entity,
   PrimaryGeneratedColumn,
-  UpdateDateColumn
+  UpdateDateColumn,
+  BeforeInsert,
+  BeforeUpdate
 } from "typeorm";
+import bcrypt, { hash } from "bcrypt";
+
+const BCRYPT_ROUNDS = 10;
 
 @Entity()
 class User extends BaseEntity {
@@ -58,12 +63,25 @@ class User extends BaseEntity {
   @Column({ type: "double precision", default: 0 })
   lastOrientation: number;
 
+  @CreateDateColumn() createdAt: string;
+  @UpdateDateColumn() updatedAt: string;
+
   get fullName(): string {
     return `${this.firstName} ${this.lastName}`;
   }
 
-  @CreateDateColumn() createdAt: string;
-  @UpdateDateColumn() updatedAt: string;
+  @BeforeInsert()
+  @BeforeUpdate()
+  async savePassword(): Promise<void> {
+    if (this.password) {
+      const hashedPassword = await this.hashPassword(this.password);
+      this.password = hashedPassword;
+    }
+  }
+
+  private hashPassword(password: string): Promise<string> {
+    return bcrypt.hash(password, BCRYPT_ROUNDS);
+  }
 }
 
 export default User;
