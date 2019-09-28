@@ -1,15 +1,15 @@
+import bcrypt from "bcrypt";
 import { IsEmail } from "class-validator";
 import {
   BaseEntity,
+  BeforeInsert,
+  BeforeUpdate,
   Column,
   CreateDateColumn,
   Entity,
   PrimaryGeneratedColumn,
-  UpdateDateColumn,
-  BeforeInsert,
-  BeforeUpdate
+  UpdateDateColumn
 } from "typeorm";
-import bcrypt, { hash } from "bcrypt";
 
 const BCRYPT_ROUNDS = 10;
 
@@ -68,6 +68,10 @@ class User extends BaseEntity {
 
   get fullName(): string {
     return `${this.firstName} ${this.lastName}`;
+  }
+
+  public comparePassword(password: string): Promise<boolean> {
+    return bcrypt.compare(this.password, password);
   }
 
   @BeforeInsert()
