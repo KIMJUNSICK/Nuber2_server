@@ -31,8 +31,9 @@
 - [x] User Entity: datamodel
 - [x] User Entity: Hashing and Encrypting User Passwords
 - [x] User Entity: Verifying User password
-- [ ] Verification Entity: datamodel
-- [ ] Verification Entity: Using type on the Entity
+- [x] Verification Entity: datamodel
+- [x] Verification Entity: Using type on the Entity
+- [x] Verification Entity: Creating Verification Key
 - [ ] Place Entity
 - [ ] Ride Entity
 - [ ] Chat and Message Entity
