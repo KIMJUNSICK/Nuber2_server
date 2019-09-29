@@ -28,5 +28,11 @@
 
 ### Data Modeling
 
-- [x] User Entity
-- [x]
+- [x] User Entity: datamodel
+- [x] User Entity: Hashing and Encrypting User Passwords
+- [x] User Entity: Verifying User password
+- [ ] Verification Entity
+- [ ] Place Entity
+- [ ] Ride Entity
+- [ ] Chat and Message Entity
+- [ ] Model Relationship
