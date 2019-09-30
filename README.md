@@ -34,7 +34,12 @@
 - [x] Verification Entity: datamodel
 - [x] Verification Entity: Using type on the Entity
 - [x] Verification Entity: Creating Verification Key
-- [ ] Place Entity
-- [ ] Ride Entity
-- [ ] Chat and Message Entity
-- [ ] Model Relationship
+- [x] Place Entity
+- [x] Ride Entity
+- [x] Chat and Message Entity
+- [x] Model Relationship
+
+### Resolvers
+
+- [ ] Resolver Types
+- [ ] Plan resolvers
