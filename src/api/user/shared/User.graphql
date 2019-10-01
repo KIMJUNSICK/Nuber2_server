@@ -15,12 +15,13 @@ type User {
   isTaken: Boolean!
   lastLng: Float
   lastLat: Float
-  chat: chat
+  lastOrientation: Float
+  chat: Chat
   messages: [Message]
   verifications: [Verification]
   rideAsPassenger: [Ride]
   rideAsDriver: [Ride]
-  lastOrientation: Float
+  fbId: String
   createdAt: String!
   updatedAt: String
 }
