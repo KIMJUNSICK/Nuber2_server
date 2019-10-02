@@ -1,14 +1,14 @@
-import { Resolvers } from "src/types/resolvers";
 import {
   StartVerificationMutationArgs,
   StartVerificationResponse
 } from "src/types/graph";
-import Verification from "src/entities/Verification";
-import { sendVerificationSMS } from "src/utils/sendSMS";
+import { Resolvers } from "src/types/resolvers";
+import Verification from "../../../entities/Verification";
+import { sendVerificationSMS } from "../../../utils/sendSMS";
 
 // predicate ( confirm Existence of data)
-// creaete, update...
 // if/else try/catch
+// creaete, update...
 
 const resolvers: Resolvers = {
   Mutation: {
@@ -28,8 +28,8 @@ const resolvers: Resolvers = {
           target: "PHONE",
           payload: phoneNumber
         }).save();
-        const key = newVerification.key;
-        sendVerificationSMS(phoneNumber, key);
+        console.log(newVerification);
+        await sendVerificationSMS(newVerification.payload, newVerification.key);
         return {
           ok: true,
           error: null
