@@ -4,6 +4,7 @@ import {
   StartVerificationResponse
 } from "src/types/graph";
 import Verification from "src/entities/Verification";
+import { sendVerificationSMS } from "src/utils/sendSMS";
 
 // predicate ( confirm Existence of data)
 // creaete, update...
@@ -28,9 +29,11 @@ const resolvers: Resolvers = {
           payload: phoneNumber
         }).save();
         const key = newVerification.key;
-        // twilio(phoneNumber, key)
-        // send message of key to device that have the phoneNumber
-        // user get key !
+        sendVerificationSMS(phoneNumber, key);
+        return {
+          ok: true,
+          error: null
+        };
       } catch (e) {
         return {
           ok: false,
