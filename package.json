@@ -18,6 +18,7 @@
     "merge-graphql-schemas": "^1.7.0",
     "morgan": "^1.9.1",
     "pg": "^7.12.1",
+    "twilio": "^3.35.0",
     "typeorm": "^0.2.19"
   },
   "devDependencies": {
@@ -25,6 +26,7 @@
     "@types/helmet": "^0.0.44",
     "@types/morgan": "^1.7.37",
     "@types/node": "^12.7.7",
+    "@types/twilio": "^0.0.10",
     "dotenv": "^8.1.0",
     "nodemon": "^1.19.2",
     "ts-node": "^8.4.1",
