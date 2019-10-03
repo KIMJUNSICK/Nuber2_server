@@ -4,6 +4,7 @@ import {
 } from "src/types/graph";
 import { Resolvers } from "src/types/resolvers";
 import User from "../../../entities/User";
+import generateJWT from "../../../utils/generateJWT";
 
 // graphql type modeling => type & args (from front?)
 // predicate & get info
@@ -19,10 +20,11 @@ const resolvers: Resolvers = {
       try {
         const existingUser = await User.findOne({ fbId });
         if (existingUser) {
+          const token = generateJWT(existingUser.id);
           return {
             ok: true,
             error: null,
-            token: "Comming Soon, already"
+            token
           };
         }
       } catch (e) {
@@ -33,14 +35,15 @@ const resolvers: Resolvers = {
         };
       }
       try {
-        await User.create({
+        const newUser = await User.create({
           ...args,
           profilePhoto: `http://graph.facebook.com/${fbId}/picture?type=square`
         }).save();
+        const token = generateJWT(newUser.id);
         return {
           ok: true,
           error: null,
-          token: "Comming Soon, created"
+          token
         };
       } catch (e) {
         return {
