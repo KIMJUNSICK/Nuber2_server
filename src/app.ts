@@ -1,4 +1,5 @@
 import cors from "cors";
+import { NextFunction, Response } from "express";
 import { GraphQLServer } from "graphql-yoga";
 import helmet from "helmet";
 import logger from "morgan";
@@ -9,7 +10,12 @@ class App {
   public app: GraphQLServer; // set a type
   constructor() {
     this.app = new GraphQLServer({
-      schema
+      schema,
+      context: req => {
+        return {
+          req: req.request // req(express).request
+        };
+      }
     });
     this.middleware();
   } // constructor is the first Ftn to be executed
@@ -19,11 +25,15 @@ class App {
     this.app.express.use(helmet());
     this.app.express.use(this.jwt);
   };
-  private jwt = async (req, res, next): Promise<void> => {
+  private jwt = async (
+    req,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> => {
     const token = req.get("X-JWT");
     if (token) {
       const user = await decodeJWT(token);
-      console.log(user);
+      user ? (req.user = user) : (req.user = undefined);
     }
     next();
   };
