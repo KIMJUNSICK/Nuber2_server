@@ -63,6 +63,16 @@ type EmailSignInResponse {
   token: String
 }
 
+type EmailSignUpResponse {
+  ok: Boolean!
+  error: String
+  token: String
+}
+
+type Mutaion {
+  EmailSignUp(firstName: String!, lastName: String!, email: String!, password: String!, profilePhoto: String!, age: Int!, phoneNumber: String!): EmailSignUpResponse!
+}
+
 type FacebookConnectResponse {
   ok: Boolean!
   error: String
@@ -110,6 +120,7 @@ type Verification {
   target: String!
   payload: String!
   key: String!
+  verified: Boolean!
   createdAt: String!
   updatedAt: String
 }
