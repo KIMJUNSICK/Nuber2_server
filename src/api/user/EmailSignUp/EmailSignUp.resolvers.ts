@@ -1,4 +1,4 @@
-import { EmailSignUpMutaionArgs, EmailSignUpResponse } from "src/types/graph";
+import { EmailSignUpMutationArgs, EmailSignUpResponse } from "src/types/graph";
 import { Resolvers } from "src/types/resolvers";
 import User from "../../../entities/User";
 import generateJWT from "../../../utils/generateJWT";
@@ -7,7 +7,7 @@ const resolvers: Resolvers = {
   Mutation: {
     EmailSignUp: async (
       _,
-      args: EmailSignUpMutaionArgs
+      args: EmailSignUpMutationArgs
     ): Promise<EmailSignUpResponse> => {
       try {
         const { email } = args;

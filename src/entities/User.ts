@@ -91,7 +91,7 @@ class User extends BaseEntity {
   }
 
   public comparePassword(password: string): Promise<boolean> {
-    return bcrypt.compare(this.password, password);
+    return bcrypt.compare(password, this.password);
   }
 
   @BeforeInsert()
