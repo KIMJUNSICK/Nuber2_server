@@ -51,15 +51,16 @@
 
 ---
 
-#### Authentication:
+#### Authentication & Security:
 
-- [ ] Generate JWT
-- [ ] Verifiy JWT
+- [x] Generate JWT
+- [x] Verifiy JWT
+- [x] Protecting Resolvers with Middlewares
 
 #### Private Resolvers:
 
 - [ ] Verify Email
-- [ ] Get my Profile
+- [x] Get my Profile
 - [ ] Update my Profile
 - [ ] Toggle Driving Mode
 - [ ] Report Location / Orientation

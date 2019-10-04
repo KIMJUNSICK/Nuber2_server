@@ -76,6 +76,16 @@ type FacebookConnectResponse {
   token: String
 }
 
+type GetMyProfileResponse {
+  ok: Boolean!
+  error: String
+  user: User
+}
+
+type GetMyProfile {
+  GetMyProfile: GetMyProfileResponse!
+}
+
 type User {
   id: Int!
   email: String
