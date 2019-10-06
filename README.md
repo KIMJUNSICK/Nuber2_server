@@ -59,8 +59,8 @@
 
 #### Private Resolvers:
 
-- [ ] Verify Email
 - [x] Get my Profile
+- [x] Verify Email
 - [ ] Update my Profile
 - [ ] Toggle Driving Mode
 - [ ] Report Location / Orientation
