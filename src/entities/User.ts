@@ -44,16 +44,16 @@ class User extends BaseEntity {
   @Column({ type: "text", nullable: true })
   phoneNumber: string;
 
-  @Column({ type: "text", default: false })
+  @Column({ type: "boolean", default: false })
   verifiedPhonenNumber: boolean;
 
   @Column({ type: "text" })
   profilePhoto: string;
 
-  @Column({ type: "text", default: false })
+  @Column({ type: "boolean", default: false })
   isDriving: boolean;
 
-  @Column({ type: "text", default: false })
+  @Column({ type: "boolean", default: false })
   isRiding: boolean;
 
   @Column({ type: "boolean", default: false })
