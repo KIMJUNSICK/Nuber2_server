@@ -46,14 +46,14 @@ type EditPlaceResponse {
   error: String
 }
 
-type GetMyPlaceResponse {
+type GetMyPlacesResponse {
   ok: Boolean!
   error: String
   places: [Place]
 }
 
 type Query {
-  GetMyPlace: GetMyPlaceResponse!
+  GetMyPlaces: GetMyPlacesResponse!
   GetMyProfile: GetMyProfileResponse!
   user: User
 }

@@ -1,11 +1,11 @@
-import { GetMyPlaceResponse } from "src/types/graph";
+import { GetMyPlacesResponse } from "src/types/graph";
 import { Resolvers } from "src/types/resolvers";
 import User from "../../../entities/User";
 import { isAuthenticated } from "../../../utils/isAuthenticated";
 
 const resolvers: Resolvers = {
   Query: {
-    GetMyPlace: async (_, __, { req }): Promise<GetMyPlaceResponse> => {
+    GetMyPlaces: async (_, __, { req }): Promise<GetMyPlacesResponse> => {
       isAuthenticated(req);
       try {
         const user = await User.findOne(
