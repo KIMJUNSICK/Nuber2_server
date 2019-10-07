@@ -26,6 +26,15 @@ type Place {
   updatedAt: String
 }
 
+type AddPlaceResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutataion {
+  AddPlace(name: String!, lat: Float!, lng: Float!, address: String!, isFav: Boolean!): AddPlaceResponse!
+}
+
 type Ride {
   id: Int!
   status: String!
