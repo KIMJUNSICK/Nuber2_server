@@ -16,10 +16,12 @@ const resolvers: Resolvers = {
       const user: User = req.user;
       try {
         const place = await Place.findOne({ id: args.placeId });
-        console.log(place);
         if (place) {
           if (place.userId === user.id) {
-            const notNull = filterNull(args);
+            const notNull: any = filterNull(args);
+            if (notNull.placeId !== null) {
+              delete notNull.placeId;
+            }
             await Place.update({ id: args.placeId }, { ...notNull });
             return {
               ok: true,
@@ -34,17 +36,16 @@ const resolvers: Resolvers = {
         } else {
           return {
             ok: false,
-            error: "Place Not Found"
+            error: "Place not found"
           };
         }
-      } catch (e) {
+      } catch (error) {
         return {
           ok: false,
-          error: e.message
+          error: error.message
         };
       }
     }
   }
 };
-
 export default resolvers;

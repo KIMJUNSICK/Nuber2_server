@@ -17,7 +17,6 @@ const resolvers: Resolvers = {
       isAuthenticated(req);
       const user: User = req.user;
       const notNull: any = filterNull(args);
-      console.log(notNull);
       if (notNull.password !== null) {
         user.password = notNull.password;
         await user.save();
