@@ -32,7 +32,11 @@ const resolvers: Resolvers = {
                 payload: newUser.email,
                 target: "EMAIL"
               }).save();
-              await sendKeyMail(newUser.fullName, email, emailVerification.key);
+              await sendKeyMail(
+                newUser.fullName,
+                newUser.email,
+                emailVerification.key
+              );
             }
             const token = generateJWT(newUser.id);
             return {
