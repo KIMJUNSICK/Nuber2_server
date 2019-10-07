@@ -3,7 +3,7 @@ type AddPlaceResponse {
   error: String
 }
 
-type Mutataion {
+type Mutation {
   AddPlace(
     name: String!
     lat: Float!
