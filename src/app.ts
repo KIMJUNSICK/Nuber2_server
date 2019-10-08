@@ -1,17 +1,30 @@
 import cors from "cors";
 import { NextFunction, Response } from "express";
-import { GraphQLServer, PubSub } from "graphql-yoga";
+import { RedisPubSub } from "graphql-redis-subscriptions";
+import { GraphQLServer } from "graphql-yoga";
 import helmet from "helmet";
+import Redis from "ioredis";
 import logger from "morgan";
 import schema from "./schema";
 import decodeJWT from "./utils/decodeJWT";
 
 class App {
   public app: GraphQLServer; // set a type
-  public pubSub: any;
+  public pubSub: RedisPubSub;
+  private options = {
+    host: process.env.REDIS_HOST,
+    port: process.env.REDIS_PORT,
+    password: process.env.REDIS_PASSWORD,
+    retryStrategy: times => {
+      // reconnect after
+      return Math.min(times * 50, 2000);
+    }
+  };
   constructor() {
-    this.pubSub = new PubSub();
-    this.pubSub.ee.setMaxListeners(99);
+    this.pubSub = new RedisPubSub({
+      publisher: new Redis(this.options),
+      subscriber: new Redis(this.options)
+    });
     this.app = new GraphQLServer({
       schema,
       context: req => {
