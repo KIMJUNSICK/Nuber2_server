@@ -27,10 +27,14 @@ class App {
     });
     this.app = new GraphQLServer({
       schema,
+      // here, req is mean that raw req or full req
+      // connection of req is WebSocket, not HTTP
       context: req => {
+        const { connection: { context = null } = {} } = req;
         return {
           req: req.request, // req(express).request
-          pubSub: this.pubSub
+          pubSub: this.pubSub,
+          webSocketContext: context
         };
       }
     });

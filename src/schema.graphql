@@ -102,7 +102,7 @@ type CompletePhoneVerificationResponse {
 }
 
 type Subscription {
-  DriverSubscription: User
+  DriversSubscription: User
 }
 
 type EmailSignInResponse {
