@@ -12,12 +12,13 @@ const resolvers: Resolvers = {
     RequestRide: async (
       _,
       args: RequestRideMutationArgs,
-      { req }
+      { req, pubSub }
     ): Promise<RequestRideResponse> => {
       isAuthenticated(req);
       const user: User = req.user;
       try {
         const ride = await Ride.create({ ...args, passenger: user }).save();
+        pubSub.publish("ridesUpdate", { NearbyRideSubscription: ride });
         return {
           ok: true,
           error: null,
