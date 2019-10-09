@@ -16,18 +16,26 @@ const resolvers: Resolvers = {
     ): Promise<RequestRideResponse> => {
       isAuthenticated(req);
       const user: User = req.user;
-      try {
-        const ride = await Ride.create({ ...args, passenger: user }).save();
-        pubSub.publish("ridesUpdate", { NearbyRideSubscription: ride });
-        return {
-          ok: true,
-          error: null,
-          ride
-        };
-      } catch (e) {
+      if (!user.isRiding) {
+        try {
+          const ride = await Ride.create({ ...args, passenger: user }).save();
+          pubSub.publish("ridesUpdate", { NearbyRideSubscription: ride });
+          return {
+            ok: true,
+            error: null,
+            ride
+          };
+        } catch (e) {
+          return {
+            ok: false,
+            error: e.message,
+            ride: null
+          };
+        }
+      } else {
         return {
           ok: false,
-          error: e.message,
+          error: "You're not request two rides",
           ride: null
         };
       }
