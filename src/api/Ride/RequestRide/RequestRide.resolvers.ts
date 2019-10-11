@@ -16,7 +16,7 @@ const resolvers: Resolvers = {
     ): Promise<RequestRideResponse> => {
       isAuthenticated(req);
       const user: User = req.user;
-      if (!user.isRiding) {
+      if (!user.isRiding && !user.isDriving) {
         try {
           const ride = await Ride.create({ ...args, passenger: user }).save();
           pubSub.publish("ridesUpdate", { NearbyRideSubscription: ride });
