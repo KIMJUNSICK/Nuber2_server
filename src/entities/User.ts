@@ -7,7 +7,6 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn
@@ -69,9 +68,6 @@ class User extends BaseEntity {
   @Column({ type: "double precision", default: 0 })
   lastOrientation: number;
 
-  @ManyToOne(type => Chat, chat => chat.participants)
-  chat: Chat;
-
   @OneToMany(type => Message, message => message.user)
   messages: Message[];
 
@@ -80,6 +76,12 @@ class User extends BaseEntity {
 
   @OneToMany(type => Ride, ride => ride.passenger)
   rideAsPassenger: Ride[];
+
+  @OneToMany(type => Chat, chat => chat.passenger)
+  chatsAsPassenger: Chat[];
+
+  @OneToMany(type => Chat, chat => chat.driver)
+  chatsAsDriver: Chat[];
 
   @OneToMany(type => Place, place => place.user)
   places: Place[];
