@@ -34,7 +34,7 @@ const resolvers: Resolvers = {
             await Chat.create({
               driver: user,
               passenger: ride.passenger
-            });
+            }).save();
           }
         } else {
           ride = await Ride.findOne({
