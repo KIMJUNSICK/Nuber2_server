@@ -12,7 +12,7 @@ const resolvers: Resolvers = {
     UpdateRideStatus: async (
       _,
       args: UpdateRideStatusMutationArgs,
-      { req }
+      { req, pubSub }
     ): Promise<UpdateRideStatusResponse> => {
       isAuthenticated(req);
       const user: User = req.user;
@@ -38,6 +38,7 @@ const resolvers: Resolvers = {
         if (ride) {
           ride.status = args.status;
           ride.save();
+          pubSub.publish("updateRideStatus", { RideStatusSubscription: ride });
           return {
             ok: true,
             error: null
